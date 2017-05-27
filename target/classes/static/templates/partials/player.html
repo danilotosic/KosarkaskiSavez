@@ -1,0 +1,32 @@
+<div class="jumbotron">
+  <h1>Izmena podataka igraca</h1>
+  <p>Na ovoj stranici se vrsi izmena podataka igraca.</p>
+</div>
+
+<div ng-controller="playerCtrl"><!-- POCETAK PLAYER CONTROLLERA -->
+
+    <div class="row"><!-- POCETAK DIV ROW -->
+        <div class="col-sm-5"><!-- COLONA 1 -->
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Izmena podataka igraca</div>
+                    <div class="panel-body">
+                        <form>
+                                <div class="form-group">
+                                    <label for="firstname">Ime</label>
+                                    <input class="form-control" type="text" id="firstname" ng-model="player.firstname" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastname">Prezime</label>
+                                    <input class="form-control" type="text" id="lastname" ng-model="player.lastname" />
+                                </div>
+                                <button class="btn btn-primary" type="button" ng-click="editPlayer()">Izmeni</button>
+                                <button class="btn btn-primary" type="button" ng-click="cancel()">Otkazi</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div><!-- KRAJ COLONA 1 -->
+
+    </div><!-- KRAJ DIV ROW -->
+</div><!-- KRAJ CLUBS CONTROLLERA -->

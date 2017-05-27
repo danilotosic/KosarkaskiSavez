@@ -1,0 +1,65 @@
+<div class="jumbotron">
+  <h1>Prikaz klubova</h1>
+  <p>Na ovoj stranici ce biti prikazani svi klubovi kao i opcije za rad sa njima.</p>
+</div>
+
+<div ng-controller="clubCtrl"><!-- POCETAK CLUB CONTROLLERA -->
+
+    <div class="row"><!-- POCETAK DIV ROW -->
+        <div class="col-sm-5"><!-- COLONA 1 -->
+            <form>
+                <div class="form-group">
+                    <label for="create">Naziv kluba</label>
+                    <input class="form-control" type="text" id="create" ng-model="club.name" />
+                </div>
+                <button class="btn btn-primary" type="button" ng-click="editClub()">Izmeni</button>
+            </form>
+            <p></p>
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Dodaj igraca</div>
+                    <div class="panel-body">
+                        <form>
+                            <fieldset ng-disabled="brojIgraca >= 12">
+                                <div class="form-group">
+                                    <label for="firstname">Ime</label>
+                                    <input class="form-control" type="text" id="firstname" ng-model="player.firstname" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastname">Prezime</label>
+                                    <input class="form-control" type="text" id="lastname" ng-model="player.lastname" />
+                                </div>
+                                <button class="btn btn-primary" type="button" ng-click="addPlayer(club.clubID)">Dodaj</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div><!-- KRAJ COLONA 1 -->
+
+        <div class="col-sm-7"><!-- COLONA 2 -->
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Ime</th>
+                        <th>Prezime</th>
+                        <th class="td-width">Opcije</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="player in club.players">
+                        <td>{{player.playerID}}</td>
+                        <td>{{player.firstname}}</td>
+                        <td>{{player.lastname}}</td>
+                        <td class="td-width">
+                            <button class="btn btn-xs btn-success" type="button" ng-click="editPlayer(player.playerID)">edit</button>
+                            <button class="btn btn-xs btn-danger" type="button" ng-click="deletePlayer(player.playerID)">delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div><!-- KRAJ COLONA 2 -->
+
+    </div><!-- KRAJ DIV ROW -->
+</div><!-- KRAJ CLUBS CONTROLLERA -->

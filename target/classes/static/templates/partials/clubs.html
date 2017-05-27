@@ -1,0 +1,62 @@
+<div class="jumbotron">
+  <h1>Prikaz klubova</h1>
+  <p>Na ovoj stranici ce biti prikazani svi klubovi kao i opcije za rad sa njima.</p>
+</div>
+
+<div ng-controller="clubsCtrl"><!-- POCETAK CLUBS CONTROLLERA -->
+
+    <div class="row"><!-- POCETAK DIV ROW -->
+        <div class="col-sm-5"><!-- COLONA 1 -->
+            <form>
+                <div class="form-group">
+                    <label for="create">Kreiraj klub</label>
+                    <input class="form-control" type="text" id="create" ng-model="club.name" />
+                </div>
+                <button class="btn btn-primary" type="button" ng-click="createClub()">Kreiraj</button>
+            </form>
+        </div><!-- KRAJ COLONA 1 -->
+    </div><!-- KRAJ DIV ROW -->
+    <p></p>
+    <div class="row"><!-- POCETAK DIV ROW -->
+        <div class="col-sm-5"><!-- COLONA 1 -->
+            <form>
+                <div class="form-group">
+                    <label for="search">Pretraga</label>
+                    <input class="form-control" type="text" id="search" ng-model="findClub.name" />
+                </div>
+                <button class="btn btn-primary" type="button" ng-click="search()">Pretrazi</button>
+            </form>
+        </div><!-- KRAJ COLONA 1 -->
+    </div><!-- KRAJ DIV ROW -->
+    <p></p>
+    <div class="row"><!-- POCETAK DIV ROW -->
+        <div class="col-sm-7"><!-- COLONA 1 -->
+            <div class="btn-group pull-right">
+                <button class="btn btn-sm btn-primary" type="button" ng-disabled="brojacStranice == 0" ng-click="changePage(-1)">prev</button>
+                <button class="btn btn-sm btn-primary" type="button" ng-disabled="brojacStranice == totalPages-1" ng-click="changePage(1)">next</button>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Naziv</th>
+                        <th>Igraci</th>
+                        <th class="td-width">Opcije</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="club in clubs">
+                        <td>{{club.clubID}}</td>
+                        <td>{{club.name}}</td>
+                        <td><a href ng-click="showPlayers(club)">prikazi igrace</a></td>
+                        <td class="td-width">
+                            <button class="btn btn-xs btn-success" type="button" ng-click="editClub(club)">edit</button>
+                            <button class="btn btn-xs btn-danger" type="button" ng-click="deleteClub(club.clubID)">delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div><!-- KRAJ COLONA 1 -->
+    </div><!-- KRAJ DIV ROW -->
+
+</div><!-- KRAJ CLUBS CONTROLLERA -->
